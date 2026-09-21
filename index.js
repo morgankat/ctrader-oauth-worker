@@ -17,7 +17,7 @@ export default {
         headers: { "Content-Type": "application/json", ...corsHeaders },
       });
     }
-    const tokenUrl = "https://openapi.ctrader.com/apps/token"
+    const tokenUrl = "https://connect.spotware.com/apps/token"
       + "?grant_type=authorization_code"
       + "&code=" + encodeURIComponent(code)
       + "&redirect_uri=" + encodeURIComponent(redirectUri)
