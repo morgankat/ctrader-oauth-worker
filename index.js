@@ -24,7 +24,9 @@ export default {
       + "&client_id=" + encodeURIComponent(env.CTRADER_CLIENT_ID)
       + "&client_secret=" + encodeURIComponent(env.CTRADER_CLIENT_SECRET);
     const resp = await fetch(tokenUrl, { method: "GET", headers: { "Accept": "application/json" } });
-    const data = await resp.text();
+    const raw = await resp.json();
+if (raw.accessToken) raw.clientSecret = env.CTRADER_CLIENT_SECRET;
+const data = JSON.stringify(raw);
     return new Response(data, { status: resp.status, headers: { "Content-Type": "application/json", ...corsHeaders } });
   },
 };
